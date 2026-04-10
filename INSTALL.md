@@ -38,7 +38,7 @@ hassio-addon-ntfy/
    git init
    git add .
    git commit -m "Initial commit: ntfy Home Assistant addon"
-   git remote add origin https://github.com/YOUR_USERNAME/hassio-addon-ntfy.git
+   git remote add origin https://github.com/DmitryKadyshev/ntfy-hassio-addon.git
    git push -u origin main
    ```
 
@@ -54,7 +54,7 @@ hassio-addon-ntfy/
 2. Перейдите в **Настройки** → **Дополнения** → **Магазин дополнений**
 3. Нажмите на три точки (⋮) в правом верхнем углу
 4. Выберите **Репозитории**
-5. Добавьте URL вашего репозитория: `https://github.com/YOUR_USERNAME/hassio-addon-ntfy`
+5. Добавьте URL вашего репозитория: `https://github.com/DmitryKadyshev/ntfy-hassio-addon`
 6. Нажмите **Добавить**
 7. Найдите "ntfy" в списке и установите его
 
