@@ -1,0 +1,45 @@
+name: "ntfy"
+version: "2.21.0"
+slug: "ntfy"
+description: "Send push notifications to your phone or desktop using PUT/POST"
+url: "https://github.com/binwiederhier/ntfy"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+init: false
+hassio_api: false
+homeassistant_api: false
+map:
+  - share:ro
+ports:
+  80/tcp: 80
+ports_description:
+  80/tcp: "HTTP port for ntfy server"
+schema:
+  base_url: str?
+  listen_port: int(80)
+  cache_duration: str(12h)
+  attachment_enabled: bool(false)
+  auth_enabled: bool(false)
+  auth_default_access: list(read-write|read-only|write-only|deny-all)?
+  timezone: str(UTC)
+  firebase_key_file: str?
+  smtp_sender_addr: str?
+  smtp_sender_from: str?
+  smtp_sender_user: str?
+  smtp_sender_pass: password?
+options:
+  base_url: ""
+  listen_port: 80
+  cache_duration: "12h"
+  attachment_enabled: false
+  auth_enabled: false
+  timezone: "UTC"
+image: "ghcr.io/{username}/hassio-addon-ntfy-{arch}"
+startup: services
+boot: auto
+watchdog: tcp://[HOST]:80/health
+timeout: 30
