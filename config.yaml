@@ -6,9 +6,7 @@ url: "https://github.com/binwiederhier/ntfy"
 arch:
   - aarch64
   - amd64
-  - armhf
   - armv7
-  - i386
 init: false
 hassio_api: false
 homeassistant_api: false
@@ -38,7 +36,6 @@ options:
   attachment_enabled: false
   auth_enabled: false
   timezone: "UTC"
-image: "ghcr.io/{username}/hassio-addon-ntfy-{arch}"
 startup: services
 boot: auto
 watchdog: tcp://[HOST]:80/health
