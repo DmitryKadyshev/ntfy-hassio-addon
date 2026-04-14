@@ -8,7 +8,7 @@ ARG TARGETOS
 
 RUN apk add --no-cache curl && \
     if [ "${TARGETARCH}" = "amd64" ]; then \
-        ARCH="x86_64"; \
+        ARCH="amd64"; \
     elif [ "${TARGETARCH}" = "arm64" ]; then \
         ARCH="arm64"; \
     elif [ "${TARGETARCH}" = "armv7" ]; then \
@@ -16,8 +16,11 @@ RUN apk add --no-cache curl && \
     else \
         ARCH="${TARGETARCH}"; \
     fi && \
-    curl -L -o /tmp/ntfy.tar.gz "https://github.com/binwiederhier/ntfy/releases/download/${NTFY_VERSION}/ntfy_${NTFY_VERSION#v}_linux_${ARCH}.tar.gz" && \
-    tar -xzf /tmp/ntfy.tar.gz -C /usr/local/bin ntfy && \
+    version="ntfy_${NTFY_VERSION#v}_${TARGETOS}_${ARCH}" && \
+    download_url="https://github.com/binwiederhier/ntfy/releases/download/${NTFY_VERSION}/$version.tar.gz" && \
+    echo $download_url && \
+    curl -L -o /tmp/ntfy.tar.gz "$download_url"  && \
+    tar --strip-components=1  -xzf /tmp/ntfy.tar.gz -C /usr/local/bin $version/ntfy && \
     chmod +x /usr/local/bin/ntfy && \
     rm /tmp/ntfy.tar.gz
 
